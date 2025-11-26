@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	color: #2b1428;
+	background-color: #fff9fb;
+}
+
 body {
 	overflow-x: hidden;
+	background-image: radial-gradient(circle at 20% 20%, rgba(255, 218, 230, 0.55), transparent 40%),
+		radial-gradient(circle at 80% 0%, rgba(255, 247, 251, 0.9), transparent 42%),
+		linear-gradient(180deg, rgba(255, 249, 251, 0.7), #fff9fb);
+}
+
+.font-display {
+	font-family: var(--font-playfair), "Playfair Display", serif;
 }

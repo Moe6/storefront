@@ -4,10 +4,11 @@ import { executeGraphQL } from "@/lib/graphql";
 import { Pagination } from "@/ui/components/Pagination";
 import { ProductList } from "@/ui/components/ProductList";
 import { ProductsPerPage } from "@/app/config";
+import { BRAND_DESCRIPTION, BRAND_NAME } from "@/lib/branding";
 
 export const metadata = {
-	title: "Products · Saleor Storefront example",
-	description: "All products in Saleor Storefront example",
+	title: `${BRAND_NAME} · All products`,
+	description: BRAND_DESCRIPTION,
 };
 
 export default async function Page(props: {

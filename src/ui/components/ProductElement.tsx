@@ -10,8 +10,8 @@ export function ProductElement({
 	priority,
 }: { product: ProductListItemFragment } & { loading: "eager" | "lazy"; priority?: boolean }) {
 	return (
-		<li data-testid="ProductElement">
-			<LinkWithChannel href={`/products/${product.slug}`} key={product.id}>
+		<li data-testid="ProductElement" className="group rounded-3xl bg-white/80 p-4 shadow-sm ring-1 ring-brand-50 transition hover:-translate-y-1 hover:shadow-md">
+			<LinkWithChannel href={`/products/${product.slug}`} key={product.id} className="block space-y-3">
 				<div>
 					{product?.thumbnail?.url && (
 						<ProductImageWrapper
@@ -24,14 +24,14 @@ export function ProductElement({
 							priority={priority}
 						/>
 					)}
-					<div className="mt-2 flex justify-between">
+					<div className="mt-4 flex items-start justify-between">
 						<div>
-							<h3 className="mt-1 text-sm font-semibold text-neutral-900">{product.name}</h3>
-							<p className="mt-1 text-sm text-neutral-500" data-testid="ProductElement_Category">
+							<h3 className="font-display text-lg text-ink">{product.name}</h3>
+							<p className="mt-1 text-sm uppercase tracking-widest text-ink/50" data-testid="ProductElement_Category">
 								{product.category?.name}
 							</p>
 						</div>
-						<p className="mt-1 text-sm font-medium text-neutral-900" data-testid="ProductElement_PriceRange">
+						<p className="text-sm font-semibold text-brand-700" data-testid="ProductElement_PriceRange">
 							{formatMoneyRange({
 								start: product?.pricing?.priceRange?.start?.gross,
 								stop: product?.pricing?.priceRange?.stop?.gross,

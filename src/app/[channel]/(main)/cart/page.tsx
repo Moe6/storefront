@@ -4,9 +4,10 @@ import { DeleteLineButton } from "./DeleteLineButton";
 import * as Checkout from "@/lib/checkout";
 import { formatMoney, getHrefForVariant } from "@/lib/utils";
 import { LinkWithChannel } from "@/ui/atoms/LinkWithChannel";
+import { BRAND_NAME } from "@/lib/branding";
 
 export const metadata = {
-	title: "Shopping Cart · Saleor Storefront example",
+	title: `Shopping Cart · ${BRAND_NAME}`,
 };
 
 export default async function Page(props: { params: Promise<{ channel: string }> }) {
@@ -18,13 +19,11 @@ export default async function Page(props: { params: Promise<{ channel: string }>
 	if (!checkout || checkout.lines.length < 1) {
 		return (
 			<section className="mx-auto max-w-7xl p-8">
-				<h1 className="mt-8 text-3xl font-bold text-neutral-900">Your Shopping Cart is empty</h1>
-				<p className="my-12 text-sm text-neutral-500">
-					Looks like you haven’t added any items to the cart yet.
-				</p>
+				<h1 className="mt-8 text-3xl font-bold text-ink">Your bag is currently empty</h1>
+				<p className="my-8 max-w-xl text-sm text-ink/70">Discover new-season styles curated by the LebobeautyCo stylists and add your favorites to keep shopping.</p>
 				<LinkWithChannel
 					href="/products"
-					className="inline-block max-w-full rounded border border-transparent bg-neutral-900 px-6 py-3 text-center font-medium text-neutral-50 hover:bg-neutral-800 aria-disabled:cursor-not-allowed aria-disabled:bg-neutral-500 sm:px-16"
+					className="inline-flex max-w-full items-center rounded-full bg-brand-600 px-8 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-lg transition hover:bg-brand-700 sm:px-16"
 				>
 					Explore products
 				</LinkWithChannel>
@@ -34,16 +33,16 @@ export default async function Page(props: { params: Promise<{ channel: string }>
 
 	return (
 		<section className="mx-auto max-w-7xl p-8">
-			<h1 className="mt-8 text-3xl font-bold text-neutral-900">Your Shopping Cart</h1>
+			<h1 className="mt-8 text-3xl font-bold text-ink">Your Shopping Cart</h1>
 			<form className="mt-12">
 				<ul
 					data-testid="CartProductList"
 					role="list"
-					className="divide-y divide-neutral-200 border-b border-t border-neutral-200"
+					className="divide-y divide-brand-50 border-b border-t border-brand-100"
 				>
 					{checkout.lines.map((item) => (
 						<li key={item.id} className="flex py-4">
-							<div className="aspect-square h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border bg-neutral-50 sm:h-32 sm:w-32">
+							<div className="aspect-square h-24 w-24 flex-shrink-0 overflow-hidden rounded-2xl border border-brand-50 bg-white/80 sm:h-32 sm:w-32">
 								{item.variant?.product?.thumbnail?.url && (
 									<Image
 										src={item.variant.product.thumbnail.url}
@@ -63,19 +62,19 @@ export default async function Page(props: { params: Promise<{ channel: string }>
 												variantId: item.variant.id,
 											})}
 										>
-											<h2 className="font-medium text-neutral-700">{item.variant?.product?.name}</h2>
+											<h2 className="font-semibold text-ink">{item.variant?.product?.name}</h2>
 										</LinkWithChannel>
-										<p className="mt-1 text-sm text-neutral-500">{item.variant?.product?.category?.name}</p>
+										<p className="mt-1 text-sm uppercase tracking-widest text-ink/60">{item.variant?.product?.category?.name}</p>
 										{item.variant.name !== item.variant.id && Boolean(item.variant.name) && (
-											<p className="mt-1 text-sm text-neutral-500">Variant: {item.variant.name}</p>
+											<p className="mt-1 text-sm text-ink/60">Variant: {item.variant.name}</p>
 										)}
 									</div>
-									<p className="text-right font-semibold text-neutral-900">
+									<p className="text-right font-semibold text-brand-700">
 										{formatMoney(item.totalPrice.gross.amount, item.totalPrice.gross.currency)}
 									</p>
 								</div>
 								<div className="flex justify-between">
-									<div className="text-sm font-bold">Qty: {item.quantity}</div>
+									<div className="text-sm font-semibold uppercase tracking-wide text-ink/80">Qty: {item.quantity}</div>
 									<DeleteLineButton checkoutId={checkoutId} lineId={item.id} />
 								</div>
 							</div>
@@ -84,13 +83,13 @@ export default async function Page(props: { params: Promise<{ channel: string }>
 				</ul>
 
 				<div className="mt-12">
-					<div className="rounded border bg-neutral-50 px-4 py-2">
+					<div className="rounded-2xl border border-brand-50 bg-white/80 px-4 py-4 shadow-sm">
 						<div className="flex items-center justify-between gap-2 py-2">
 							<div>
-								<p className="font-semibold text-neutral-900">Your Total</p>
-								<p className="mt-1 text-sm text-neutral-500">Shipping will be calculated in the next step</p>
+								<p className="font-semibold text-ink">Your Total</p>
+								<p className="mt-1 text-sm text-ink/60">Shipping calculated on the next step.</p>
 							</div>
-							<div className="font-medium text-neutral-900">
+							<div className="font-semibold text-brand-700">
 								{formatMoney(checkout.totalPrice.gross.amount, checkout.totalPrice.gross.currency)}
 							</div>
 						</div>

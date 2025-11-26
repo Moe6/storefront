@@ -1,10 +1,11 @@
 import { type ReactNode } from "react";
 import { Footer } from "@/ui/components/Footer";
 import { Header } from "@/ui/components/Header";
+import { BRAND_DESCRIPTION, BRAND_NAME } from "@/lib/branding";
 
 export const metadata = {
-	title: "Saleor Storefront example",
-	description: "Starter pack for building performant e-commerce experiences with Saleor.",
+	title: `${BRAND_NAME} · Boutique fashion`,
+	description: BRAND_DESCRIPTION,
 };
 
 export default async function RootLayout(props: {

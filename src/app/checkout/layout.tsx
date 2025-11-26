@@ -1,14 +1,15 @@
 import { type ReactNode } from "react";
 import { AuthProvider } from "@/ui/components/AuthProvider";
+import { BRAND_DESCRIPTION, BRAND_NAME } from "@/lib/branding";
 
 export const metadata = {
-	title: "Saleor Storefront example",
-	description: "Starter pack for building performant e-commerce experiences with Saleor.",
+	title: `${BRAND_NAME} · Checkout`,
+	description: BRAND_DESCRIPTION,
 };
 
 export default function RootLayout(props: { children: ReactNode }) {
 	return (
-		<main>
+		<main className="bg-blush-50">
 			<AuthProvider>{props.children}</AuthProvider>
 		</main>
 	);
