@@ -87,11 +87,8 @@ export async function Footer({ channel }: { channel: string }) {
 					<p>Copyright &copy; {currentYear} {BRAND_COPYRIGHT}. All rights reserved.</p>
 					<p className="flex items-center gap-1">
 						<span className="text-ink/60">Powered by</span>
-						<Link target={"_blank"} href={"https://saleor.io/"} className="font-semibold text-brand-600">
-							Saleor
-						</Link>
-						<Link href={"https://github.com/saleor/saleor"} target={"_blank"} className={"opacity-40 transition hover:opacity-70"}>
-							<Image alt="Saleor github repository" height={20} width={20} src={"/github-mark.svg"} />
+						<Link target={"_blank"} href={"https://www.ethercircuit.co.za/"} className="font-semibold text-brand-600">
+							Ethercircuit Solutions
 						</Link>
 					</p>
 				</div>
